@@ -1,0 +1,9 @@
+[Plugin]
+Loader=python3
+Module=mdpreview
+IAge=3
+Name=Markdown Preview
+Description=Splits Markdown tabs into editor and live preview. F9 / Ctrl+Alt+M cycles split, preview only, text only.
+Authors=Enes Birlik
+Version=1.0
+Website=https://github.com/enesbirlik/gedit-md-preview
