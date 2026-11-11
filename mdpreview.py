@@ -16,6 +16,7 @@ RENDER_DELAY_MS = 300
 PAGE = """<!doctype html><html><head><meta charset="utf-8"><style>
 :root { color-scheme: light dark; }
 body { font: 15px/1.55 sans-serif; margin: 12px 20px; }
+body.narrow { max-width: 900px; margin: 12px auto; padding: 0 20px; }
 pre, code { font-family: monospace; background: rgba(127,127,127,.15); border-radius: 4px; }
 code { padding: 1px 4px; } pre { padding: 8px 10px; overflow-x: auto; } pre code { padding: 0; background: none; }
 table { border-collapse: collapse; } th, td { border: 1px solid rgba(127,127,127,.5); padding: 4px 8px; }
@@ -80,6 +81,13 @@ class Split:
         if mode == SPLIT:
             GLib.idle_add(self.center_divider)
         (self.web if mode == PREVIEW else self.tab.get_view()).grab_focus()
+        if self.loaded:
+            self.apply_width()
+
+    def apply_width(self):
+        # Preview alone: centered readable column. Side by side: use the full pane.
+        self.web.run_javascript('document.body.classList.toggle("narrow", %s);'
+                                % ('true' if self.mode == PREVIEW else 'false'), None, None, None)
 
     def center_divider(self):
         width = self.paned.get_allocated_width()
@@ -116,6 +124,7 @@ class Split:
         if event == WebKit2.LoadEvent.FINISHED:
             self.loaded = True
             self.inject(self.pending)
+            self.apply_width()
 
     def on_decide_policy(self, web, decision, kind):
         # Clicked links open in the default app instead of replacing the preview.
