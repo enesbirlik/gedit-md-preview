@@ -15,7 +15,7 @@ RENDER_DELAY_MS = 300
 
 PAGE = """<!doctype html><html><head><meta charset="utf-8"><style>
 :root { color-scheme: light dark; }
-body { font: 15px/1.55 sans-serif; margin: 12px 20px; max-width: 900px; }
+body { font: 15px/1.55 sans-serif; margin: 12px 20px; }
 pre, code { font-family: monospace; background: rgba(127,127,127,.15); border-radius: 4px; }
 code { padding: 1px 4px; } pre { padding: 8px 10px; overflow-x: auto; } pre code { padding: 0; background: none; }
 table { border-collapse: collapse; } th, td { border: 1px solid rgba(127,127,127,.5); padding: 4px 8px; }
