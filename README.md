@@ -32,3 +32,7 @@ Restart gedit, then enable **Markdown Preview** under Preferences → Plugins.
 While enabled, F9 is taken from gedit's side panel toggle (restored when the plugin is disabled).
 
 The plugin moves the tab's editor frame into a `Gtk.Paned`. That relies on gedit internals, so a future gedit release may break it.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
